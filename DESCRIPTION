@@ -1,0 +1,11 @@
+Package: nntools
+Title: Custom helper functions for NN users
+Version: 0.0.0.9000
+Authors@R: 
+    person("Bryan", "Blanc", , "bblanc@nelsonnygaard.com", role = c("aut", "cre"))
+Description: A catch all package for custom functions not written into other packages to accomplish typical NN tasks. Contact Bryan if you would like something included. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: sf, clipr, rstudioapi, utils, dplyr, purrr, stringr, tibble, tidyr, tidyselect, stats, nngeo, rlang, magrittr
