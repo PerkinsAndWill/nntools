@@ -1,8 +1,8 @@
 Package: nntools
 Title: Custom helper functions for NN users
 Version: 0.0.0.9000
-Authors@R: 
-    person("Bryan", "Blanc", , "bblanc@nelsonnygaard.com", role = c("aut", "cre"))
+Authors@R: c(person('Bryan', 'Blanc', email = 'bblanc@nelsonnygaard.com', role = c('cre', 'aut')),
+             person('Esther', 'Needham', email = 'eneedham@nelsonnygaard.com', role = c('aut')))
 Description: A catch all package for custom functions not written into other packages to accomplish typical NN tasks. Contact Bryan if you would like something included. 
 License: MIT + file LICENSE
 Encoding: UTF-8

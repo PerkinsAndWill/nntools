@@ -1,2 +1,18 @@
 url: ~
 
+reference:
+- title: Angular statistics
+  desc:  Functions for helping with angular statistics
+- contents:
+  - mean_azimuth
+  - opposite_azimuth
+  - azimuth_difference
+  - st_avg_line_azimuth
+
+- title: Other Utilities
+  desc: Other useful functions that don't fit into another group.
+- contents:
+  - write_clip_with_header
+  - get_sharepoint_dir
+  - replace_nan
+  - mm_norm
