@@ -23,7 +23,7 @@ write_clip_with_header = function(tbl, desc = NULL, ...){
   )
 
   line_tbl = tbl %>%
-    tidyr::unite(.data$line,tidyselect::everything(),sep = "\t")
+    tidyr::unite('line',tidyselect::everything(),sep = "\t")
 
   string_tbl = line_tbl %>%
     dplyr::summarise(all_lines = paste(.data$line,collapse = "\n")) %>%
