@@ -1,5 +1,5 @@
 # nntools
 
-`devtools::install_github("PerkinsAndWill/bdat_project_module/bdatprojmodule.golem",
+`devtools::install_github("PerkinsAndWill/nntools",
                           ref = "main",
                           auth_token = "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")`
