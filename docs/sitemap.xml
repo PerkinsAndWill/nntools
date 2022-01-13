@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//index.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/azimuth_difference.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/get_sharepoint_dir.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/mean_azimuth.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/mm_norm.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/opposite_azimuth.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/replace_nan.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/st_avg_line_azimuth.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/st_parallel_line.html</loc>
+  </url>
+  <url>
+    <loc>https://perkinsandwill.github.io/nntools//reference/write_clip_with_header.html</loc>
+  </url>
+</urlset>
