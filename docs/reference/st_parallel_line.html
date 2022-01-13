@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • nntools</title>
+<title>Create parallel lines at distance, assumes sf data frame input. — st_parallel_line • nntools</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Create parallel lines at distance, assumes sf data frame input. — st_parallel_line" />
+<meta property="og:description" content="Create parallel lines at distance, assumes sf data frame input." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -100,103 +101,45 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Create parallel lines at distance, assumes sf data frame input.</h1>
+    
+    <div class="hidden name"><code>st_parallel_line.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Create parallel lines at distance, assumes sf data frame input.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>st_parallel_line</span><span class='op'>(</span><span class='va'>line_obj</span>, <span class='va'>coord_local</span>, <span class='va'>distance</span>, forward <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-angular-statistics" class="hasAnchor"><a href="#section-angular-statistics" class="anchor"></a>Angular statistics</h2>
-          <p class="section-desc"><p>Functions for helping with angular statistics</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="mean_azimuth.html">mean_azimuth()</a></code> </p>
-        </td>
-        <td><p>Compute a weighted average azimuth (using angular statistics) of multiple line segments</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="opposite_azimuth.html">opposite_azimuth()</a></code> </p>
-        </td>
-        <td><p>Return opposite azimuth in decimal degrees (for a given azimuth in decimal degrees)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="azimuth_difference.html">azimuth_difference()</a></code> </p>
-        </td>
-        <td><p>Compute a a difference between two azimuth using angular math</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="st_avg_line_azimuth.html">st_avg_line_azimuth()</a></code> </p>
-        </td>
-        <td><p>Compute the average azimuth of a complex (typically more than two vertices) line segment</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-other-utilities" class="hasAnchor"><a href="#section-other-utilities" class="anchor"></a>Other Utilities</h2>
-          <p class="section-desc"><p>Other useful functions that don’t fit into another group.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="write_clip_with_header.html">write_clip_with_header()</a></code> </p>
-        </td>
-        <td><p>Writes to Clipboard with Header</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_sharepoint_dir.html">get_sharepoint_dir()</a></code> </p>
-        </td>
-        <td><p>Get sharepoint directory for user running this function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="replace_nan.html">replace_nan()</a></code> </p>
-        </td>
-        <td><p>Replance NaN with NA</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mm_norm.html">mm_norm()</a></code> </p>
-        </td>
-        <td><p>Min-Max Normalization of a Vector of Numbers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="st_parallel_line.html">st_parallel_line()</a></code> </p>
-        </td>
-        <td><p>Create parallel lines at distance, assumes sf data frame input.</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>line_obj</th>
+      <td><p><code>{sf}</code> data frame</p></td>
+    </tr>
+    <tr>
+      <th>coord_local</th>
+      <td><p>EPSG code of local (planar) coordinate system</p></td>
+    </tr>
+    <tr>
+      <th>distance</th>
+      <td><p>Distance of parallel line, in specified planar coordinate system</p></td>
+    </tr>
+    <tr>
+      <th>forward</th>
+      <td><p>Direction of parallel line generation. Default is in forward direction, select FALSE if you want in other direction.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>{sf}</code> data frame with transformed geometry (parallel lines per specifications)</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

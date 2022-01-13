@@ -16,3 +16,4 @@ reference:
   - get_sharepoint_dir
   - replace_nan
   - mm_norm
+  - st_parallel_line
