@@ -11,3 +11,6 @@ RoxygenNote: 7.1.2
 Imports: sf, clipr, rstudioapi, utils, dplyr, purrr, stringr, tibble, tidyr, tidyselect, stats, nngeo, rlang, magrittr
 URL: https://github.com/PerkinsAndWill/nntools
 BugReports: https://github.com/PerkinsAndWill/nntools/issues
+Depends: 
+    R (>= 2.10)
+LazyData: true
