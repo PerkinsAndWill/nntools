@@ -18,3 +18,8 @@ reference:
   - replace_nan
   - mm_norm
   - st_parallel_line
+
+- title: Package Data
+  desc: Supporting data for functions in the package, also available for export
+- contents:
+  - nn_base_color_palette
