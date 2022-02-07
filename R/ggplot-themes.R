@@ -32,6 +32,7 @@ nn_colors <- function(...){
 #' Basic Nelson\\Nygaard Plot Theme
 #'
 #' @param legend_right Legend defaults to top, if you want on right, set this parameter
+#' @param grey_background By default, these plots have a light grey background. Set to FALSE to use white.
 #' @param base_size Base font size, defaults to 12
 #' @param base_family Base font family, defaults to Barlow
 #' @param base_line_size Base grid line size
@@ -39,10 +40,11 @@ nn_colors <- function(...){
 #'
 #' @export
 nn_basic_theme <- function(legend_right = FALSE,
-                     base_size = 12,
-                     base_family = "Barlow",
-                     base_line_size = base_size / 170,
-                     base_rect_size = base_size / 170) {
+                           grey_background = TRUE,
+                           base_size = 12,
+                           base_family = "Barlow",
+                           base_line_size = base_size / 170,
+                           base_rect_size = base_size / 170) {
 
   if(base_family=="Barlow"){
     #library(showtext)
@@ -58,8 +60,8 @@ nn_basic_theme <- function(legend_right = FALSE,
   grid_line_size <- 0.2
   title_text_color <- nn_colors("NN Midnight")
   other_text_color <- nn_colors("NN Midnight")
-  plot_bg_color <- nn_colors("NN Harbor")
-  panel_bg_color <- nn_colors("NN Harbor")
+  plot_bg_color <- ifelse(grey_background,nn_colors("NN Harbor"),nn_colors("NN White"))
+  panel_bg_color <- ifelse(grey_background,nn_colors("NN Harbor"),nn_colors("NN White"))
 
   if(legend_right == TRUE){
     spec_legend_position <- "right"
