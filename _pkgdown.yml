@@ -10,6 +10,12 @@ reference:
   - azimuth_difference
   - st_avg_line_azimuth
 
+- title: Graphics Utilities
+  desc: Tools for data visualization using NN styles
+  contents:
+  - nn_colors
+  - nn_basic_theme
+
 - title: Other Utilities
   desc: Other useful functions that don't fit into another group.
 - contents:

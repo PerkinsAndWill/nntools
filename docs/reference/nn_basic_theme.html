@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • nntools</title>
+<title>Basic Nelson\Nygaard Plot Theme — nn_basic_theme • nntools</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Basic Nelson\Nygaard Plot Theme — nn_basic_theme" />
+<meta property="og:description" content="Basic Nelson\Nygaard Plot Theme" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -105,147 +106,52 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Basic Nelson\Nygaard Plot Theme</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PerkinsAndWill/nntools/blob/master/R/ggplot-themes.R'><code>R/ggplot-themes.R</code></a></small>
+    <div class="hidden name"><code>nn_basic_theme.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Basic Nelson\Nygaard Plot Theme</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>nn_basic_theme</span><span class='op'>(</span>
+  legend_right <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  base_size <span class='op'>=</span> <span class='fl'>12</span>,
+  base_family <span class='op'>=</span> <span class='st'>"Barlow"</span>,
+  base_line_size <span class='op'>=</span> <span class='va'>base_size</span><span class='op'>/</span><span class='fl'>170</span>,
+  base_rect_size <span class='op'>=</span> <span class='va'>base_size</span><span class='op'>/</span><span class='fl'>170</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-angular-statistics" class="hasAnchor"><a href="#section-angular-statistics" class="anchor"></a>Angular statistics</h2>
-          <p class="section-desc"><p>Functions for helping with angular statistics</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="mean_azimuth.html">mean_azimuth()</a></code> </p>
-        </td>
-        <td><p>Compute a weighted average azimuth (using angular statistics) of multiple line segments</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="opposite_azimuth.html">opposite_azimuth()</a></code> </p>
-        </td>
-        <td><p>Return opposite azimuth in decimal degrees (for a given azimuth in decimal degrees)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="azimuth_difference.html">azimuth_difference()</a></code> </p>
-        </td>
-        <td><p>Compute a a difference between two azimuth using angular math</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="st_avg_line_azimuth.html">st_avg_line_azimuth()</a></code> </p>
-        </td>
-        <td><p>Compute the average azimuth of a complex (typically more than two vertices) line segment</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-graphics-utilities" class="hasAnchor"><a href="#section-graphics-utilities" class="anchor"></a>Graphics Utilities</h2>
-          <p class="section-desc"><p>Tools for data visualization using NN styles</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="nn_colors.html">nn_colors()</a></code> </p>
-        </td>
-        <td><p>Return NN colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nn_basic_theme.html">nn_basic_theme()</a></code> </p>
-        </td>
-        <td><p>Basic Nelson\Nygaard Plot Theme</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-other-utilities" class="hasAnchor"><a href="#section-other-utilities" class="anchor"></a>Other Utilities</h2>
-          <p class="section-desc"><p>Other useful functions that don’t fit into another group.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="write_clip_with_header.html">write_clip_with_header()</a></code> </p>
-        </td>
-        <td><p>Writes to Clipboard with Header</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_sharepoint_dir.html">get_sharepoint_dir()</a></code> </p>
-        </td>
-        <td><p>Get sharepoint directory for user running this function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="replace_nan.html">replace_nan()</a></code> </p>
-        </td>
-        <td><p>Replance NaN with NA</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mm_norm.html">mm_norm()</a></code> </p>
-        </td>
-        <td><p>Min-Max Normalization of a Vector of Numbers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="st_parallel_line.html">st_parallel_line()</a></code> </p>
-        </td>
-        <td><p>Create parallel lines at distance, assumes sf data frame input.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-package-data" class="hasAnchor"><a href="#section-package-data" class="anchor"></a>Package Data</h2>
-          <p class="section-desc"><p>Supporting data for functions in the package, also available for export</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="nn_base_color_palette.html">nn_base_color_palette</a></code> </p>
-        </td>
-        <td><p>Base NN Color Palette (2022)</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>legend_right</th>
+      <td><p>Legend defaults to top, if you want on right, set this parameter</p></td>
+    </tr>
+    <tr>
+      <th>base_size</th>
+      <td><p>Base font size, defaults to 12</p></td>
+    </tr>
+    <tr>
+      <th>base_family</th>
+      <td><p>Base font family, defaults to Barlow</p></td>
+    </tr>
+    <tr>
+      <th>base_line_size</th>
+      <td><p>Base grid line size</p></td>
+    </tr>
+    <tr>
+      <th>base_rect_size</th>
+      <td><p>Base rectangle size</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
