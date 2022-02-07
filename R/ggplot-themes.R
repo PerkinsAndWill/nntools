@@ -77,6 +77,8 @@ nn_basic_theme <- function(legend_right = FALSE,
                          base_family = base_family,
                          base_line_size = base_line_size) %+replace%
     ggplot2::theme(
+      strip.background = ggplot2::element_rect(fill = grid_line_color, linetype = 0, color = NA),
+      strip.text = ggplot2::element_text(color = nn_colors("NN White")),
       plot.background = ggplot2::element_rect(fill = plot_bg_color, linetype = 0, colour = NA),
       panel.background = ggplot2::element_rect(fill = panel_bg_color, linetype = 0, colour = NA),
       plot.title = ggplot2::element_text(
