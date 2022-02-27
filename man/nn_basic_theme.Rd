@@ -6,6 +6,7 @@
 \usage{
 nn_basic_theme(
   legend_right = FALSE,
+  grey_background = TRUE,
   base_size = 12,
   base_family = "Barlow",
   base_line_size = base_size/170,
@@ -14,6 +15,8 @@ nn_basic_theme(
 }
 \arguments{
 \item{legend_right}{Legend defaults to top, if you want on right, set this parameter}
+
+\item{grey_background}{By default, these plots have a light grey background. Set to FALSE to use white.}
 
 \item{base_size}{Base font size, defaults to 12}
 

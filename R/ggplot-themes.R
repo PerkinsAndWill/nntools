@@ -1,34 +1,3 @@
-#' Return NN colors
-#'
-#' @param ... Can leave empty if you just want to return all colors, specify name(s) if you want to return those colors
-#'
-#' @return All colors, or requested colors (hex codes)
-#' @export
-#'
-#' @examples
-#' nn_colors()
-#' nn_colors("NN Blue")
-nn_colors <- function(...){
-
-  cols <- c(...)
-
-  if(is.null(cols)){
-    return(nn_base_color_palette %>%
-             dplyr::pull(hex_code) %>%
-             purrr::set_names(nn_base_color_palette$color_name))
-  }
-
-  not_found <- which(!(cols %in% nn_base_color_palette$color_name))
-  if(length(not_found) > 0){
-    warning(paste0("Could not find colors ", paste0(cols[not_found], collapse = ", "), ". Returned NAs instead.\n"))
-  }
-
-  nn_base_color_palette %>%
-    dplyr::filter(color_name %in% cols) %>%
-    dplyr::pull(hex_code) %>%
-    return()
-}
-
 #' Basic Nelson\\Nygaard Plot Theme
 #'
 #' @param legend_right Legend defaults to top, if you want on right, set this parameter

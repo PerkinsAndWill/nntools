@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Basic Nelson\Nygaard Plot Theme — nn_basic_theme • nntools</title>
+<title>Return a sequential, diverging, or qualitative palette/ramp of NN colors — nn_color_ramp • nntools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Basic Nelson\Nygaard Plot Theme — nn_basic_theme" />
-<meta property="og:description" content="Basic Nelson\Nygaard Plot Theme" />
+<meta property="og:title" content="Return a sequential, diverging, or qualitative palette/ramp of NN colors — nn_color_ramp" />
+<meta property="og:description" content="Return a sequential, diverging, or qualitative palette/ramp of NN colors" />
 
 
 
@@ -108,54 +108,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Basic Nelson\Nygaard Plot Theme</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PerkinsAndWill/nntools/blob/master/R/ggplot-themes.R'><code>R/ggplot-themes.R</code></a></small>
-    <div class="hidden name"><code>nn_basic_theme.Rd</code></div>
+    <h1>Return a sequential, diverging, or qualitative palette/ramp of NN colors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PerkinsAndWill/nntools/blob/master/R/color-palettes.R'><code>R/color-palettes.R</code></a></small>
+    <div class="hidden name"><code>nn_color_ramp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Basic Nelson\Nygaard Plot Theme</p>
+    <p>Return a sequential, diverging, or qualitative palette/ramp of NN colors</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nn_basic_theme</span><span class='op'>(</span>
-  legend_right <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  grey_background <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  base_size <span class='op'>=</span> <span class='fl'>12</span>,
-  base_family <span class='op'>=</span> <span class='st'>"Barlow"</span>,
-  base_line_size <span class='op'>=</span> <span class='va'>base_size</span><span class='op'>/</span><span class='fl'>170</span>,
-  base_rect_size <span class='op'>=</span> <span class='va'>base_size</span><span class='op'>/</span><span class='fl'>170</span>
+    <pre class="usage"><span class='fu'>nn_color_ramp</span><span class='op'>(</span>
+  num_colors <span class='op'>=</span> <span class='fl'>5</span>,
+  type <span class='op'>=</span> <span class='st'>"seq"</span>,
+  palette_name <span class='op'>=</span> <span class='st'>"Blue"</span>,
+  direction <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>legend_right</th>
-      <td><p>Legend defaults to top, if you want on right, set this parameter</p></td>
+      <th>num_colors</th>
+      <td><p>Number of colors you would like, within the bounds of # of colors available</p></td>
     </tr>
     <tr>
-      <th>grey_background</th>
-      <td><p>By default, these plots have a light grey background. Set to FALSE to use white.</p></td>
+      <th>type</th>
+      <td><p>One of seq (sequential), div (diverging) or qual (qualitative)</p></td>
     </tr>
     <tr>
-      <th>base_size</th>
-      <td><p>Base font size, defaults to 12</p></td>
+      <th>palette_name</th>
+      <td><p>String indicating the name of the palette (not case-sensitive)</p></td>
     </tr>
     <tr>
-      <th>base_family</th>
-      <td><p>Base font family, defaults to Barlow</p></td>
-    </tr>
-    <tr>
-      <th>base_line_size</th>
-      <td><p>Base grid line size</p></td>
-    </tr>
-    <tr>
-      <th>base_rect_size</th>
-      <td><p>Base rectangle size</p></td>
+      <th>direction</th>
+      <td><p>Sets the order of colors in the scale. If 1, colors are ordered in the default order. If -1, the order of colors is reversed.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Character vector of hex codes corresponding to queried colors</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>nn_color_ramp</span><span class='op'>(</span>num_colors <span class='op'>=</span> <span class='fl'>5</span>, type <span class='op'>=</span> <span class='st'>"seq"</span>, palette_name <span class='op'>=</span> <span class='st'>"Blue"</span>, direction<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "#F4F8FA" "#6CABC6" "#006D9D" "#003851" "#000E14"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

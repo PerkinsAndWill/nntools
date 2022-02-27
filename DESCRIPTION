@@ -8,7 +8,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Imports: sf, clipr, rstudioapi, utils, dplyr, purrr, stringr, tibble, tidyr, tidyselect, stats, nngeo, rlang, magrittr, showtext
+Imports: sf, clipr, rstudioapi, utils, dplyr, purrr, stringr, tibble, tidyr, tidyselect, stats, nngeo, rlang, magrittr, showtext, ggplot2, sysfonts
 URL: https://github.com/PerkinsAndWill/nntools
 BugReports: https://github.com/PerkinsAndWill/nntools/issues
 Depends: 
