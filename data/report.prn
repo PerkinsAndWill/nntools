@@ -1,0 +1,205 @@
+GTFS Edit Log
+GTFS Name: C:\Users\blancb\Local\GitHub\nntools\data\
+Date Processed:    04/04/2022
+Time Processed:    09:35:13
+header:agency_name,agency_url,agency_timezone<
+field 1:AGENCY_NAME                                                                                                                                                                                             
+field 2:AGENCY_URL                                                                                                                                                                                              
+field 3:AGENCY_TIMEZONE                                                                                                                                                                                         
+field 4:                                                                                                                                                                                                        
+field 5:                                                                                                                                                                                                        
+field 6:                                                                                                                                                                                                        
+field 7:                                                                                                                                                                                                        
+field 8:                                                                                                                                                                                                        
+field 9:                                                                                                                                                                                                        
+field10:                                                                                                                                                                                                        
+field11:                                                                                                                                                                                                        
+field12:                                                                                                                                                                                                        
+field13:                                                                                                                                                                                                        
+field14:                                                                                                                                                                                                        
+field15:                                                                                                                                                                                                        
+fieldindex     1    0
+fieldindex     2    1
+fieldindex     3    2
+fieldindex     4    3
+fieldindex     5    0
+fieldindex     6    0
+fieldindex     7    0
+fieldindex     8    0
+fieldindex     9    0
+fieldindex    10    0
+Agency id: 
+Agency name: GTFSedAgency
+ 
+Calendar.txt file
+ 
+ SERVICE_ID                                        SUN MON TUE WED THU FRI SAT   START      END
+================================================== === === === === === === === ========= =========
+Weekday                                              0   1   1   1   1   1   0 20220101  20221231  
+Weekend                                              1   0   0   0   0   0   1 20220101  20221231  
+Saturday                                             1   0   0   0   0   0   0 20220101  20221231  
+Sunday                                               1   0   0   0   0   0   0 20220101  20221231  
+    1 startdate: 1640995200
+    2 startdate: 1640995200
+    3 startdate: 1640995200
+    4 startdate: 1640995200
+Initial day selected for this GTFS: 20220105
+ 
+ Service_ID analysis for date: 20220105
+ 
+SERVICE_ID                                         Operates on Date
+================================================== =================
+Weekday                                                  Yes
+Weekend                                                  No 
+Saturday                                                 No 
+Sunday                                                   No 
+Processing route file: C:\Users\blancb\Local\GitHub\nntools\data\routes.txt
+header:route_id,route_short_name,route_long_name,route_type<
+field 1:ROUTE_ID                                                                                                                                                                                                
+field 2:ROUTE_SHORT_NAME                                                                                                                                                                                        
+field 3:ROUTE_LONG_NAME                                                                                                                                                                                         
+field 4:ROUTE_TYPE                                                                                                                                                                                              
+field 5:                                                                                                                                                                                                        
+field 6:                                                                                                                                                                                                        
+field 7:                                                                                                                                                                                                        
+field 8:                                                                                                                                                                                                        
+field 9:                                                                                                                                                                                                        
+field10:                                                                                                                                                                                                        
+fieldindex     1    1
+fieldindex     2    2
+fieldindex     3    3
+fieldindex     4    0
+fieldindex     5    4
+fieldindex     6    0
+fieldindex     7    0
+fieldindex     8    0
+fieldindex     9    0
+Processing trip file: C:\Users\blancb\Local\GitHub\nntools\data\trips.txt
+header:route_id,service_id,trip_id<
+field 1:ROUTE_ID                                                                                                                                                                                                
+field 2:SERVICE_ID                                                                                                                                                                                              
+field 3:TRIP_ID                                                                                                                                                                                                 
+field 4:                                                                                                                                                                                                        
+field 5:                                                                                                                                                                                                        
+field 6:                                                                                                                                                                                                        
+field 7:                                                                                                                                                                                                        
+field 8:                                                                                                                                                                                                        
+field 9:                                                                                                                                                                                                        
+field10:                                                                                                                                                                                                        
+field11:                                                                                                                                                                                                        
+field12:                                                                                                                                                                                                        
+field13:                                                                                                                                                                                                        
+field14:                                                                                                                                                                                                        
+field15:                                                                                                                                                                                                        
+field16:                                                                                                                                                                                                        
+field17:                                                                                                                                                                                                        
+field18:                                                                                                                                                                                                        
+field19:                                                                                                                                                                                                        
+field20:                                                                                                                                                                                                        
+fieldindex     1    1
+fieldindex     2    2
+fieldindex     3    3
+fieldindex     4    0
+fieldindex     5    0
+fieldindex     6    0
+fieldindex     7    0
+fieldindex     8    0
+fieldindex     9    0
+fieldindex    10    0
+fieldindex    11    0
+Processing stops file: C:\Users\blancb\Local\GitHub\nntools\data\stops.txt
+header:stop_id,stop_name,stop_lat,stop_lon<
+field 1:STOP_ID                                                                                                                                                                                                 
+field 2:STOP_NAME                                                                                                                                                                                               
+field 3:STOP_LAT                                                                                                                                                                                                
+field 4:STOP_LON                                                                                                                                                                                                
+field 5:                                                                                                                                                                                                        
+field 6:                                                                                                                                                                                                        
+field 7:                                                                                                                                                                                                        
+field 8:                                                                                                                                                                                                        
+field 9:                                                                                                                                                                                                        
+field10:                                                                                                                                                                                                        
+field11:                                                                                                                                                                                                        
+field12:                                                                                                                                                                                                        
+field13:                                                                                                                                                                                                        
+field14:                                                                                                                                                                                                        
+field15:                                                                                                                                                                                                        
+field16:                                                                                                                                                                                                        
+field17:                                                                                                                                                                                                        
+field18:                                                                                                                                                                                                        
+field19:                                                                                                                                                                                                        
+field20:                                                                                                                                                                                                        
+fieldindex     1    1
+fieldindex     2    2
+fieldindex     3    0
+fieldindex     4    3
+fieldindex     5    4
+fieldindex     6    0
+fieldindex     7    0
+fieldindex     8    0
+fieldindex     9    0
+fieldindex    10    0
+fieldindex    11    0
+fieldindex    12    0
+Processing stop_times file: C:\Users\blancb\Local\GitHub\nntools\data\stop_times.txt
+header:trip_id,arrival_time,departure_time,stop_id,stop_sequence<
+field 1:TRIP_ID                                                                                                                                                                                                 
+field 2:ARRIVAL_TIME                                                                                                                                                                                            
+field 3:DEPARTURE_TIME                                                                                                                                                                                          
+field 4:STOP_ID                                                                                                                                                                                                 
+field 5:STOP_SEQUENCE                                                                                                                                                                                           
+field 6:                                                                                                                                                                                                        
+field 7:                                                                                                                                                                                                        
+field 8:                                                                                                                                                                                                        
+field 9:                                                                                                                                                                                                        
+field10:                                                                                                                                                                                                        
+fieldindex     1    1
+fieldindex     2    2
+fieldindex     3    3
+fieldindex     4    4
+fieldindex     5    5
+fieldindex     6    0
+fieldindex     7    0
+ 
+Routes.txt file
+ 
+Route# ROUTE_ID (first 50 of up to 100 characters)        ROUTE_SHORT_NAME (first 40 chars)        ROUTE_LONG_NAME (first 40 chars)         ROUTE_DESC (first 40 chars)              ROUTE_TYPE
+====== ================================================== ======================================== ======================================== ======================================== ==========
+ 
+derived trip groups
+ 
+TGRP#  ROUTE_ID (first 50 of up to 100 characters)        EXAMPLE TRIP_ID (first 40 characters)    First Stop                               Last Stop
+====== ================================================== ======================================== ======================================== ========================================
+ 
+trips.txt file
+ 
+Trip#  ROUTE_ID (first 50 of up to 100 characters)        SERVICE_ID (first 40 characters)         TRIP_ID (first 40 characters)            DIRECTION_ID     BLOCK_ID         tripgroup
+====== ================================================== ======================================== ======================================== ============ ==================== =========
+ 
+No frequencies.txt file found in GTFS directory
+ 
+stops.txt file
+ 
+Stop#  stop_id                                  stop_name                                stop_desc                                stop_code            stop_lat      stop_lon
+====== ======================================== ======================================== ======================================== ==================== ============= =============
+ first 1000
+ last 1000
+ 
+No transfers.txt file found in GTFS directory
+ 
+No pnr.txt file found in GTFS directory
+ 
+stop_times.txt file
+ 
+stoptm# trip_id (first 40 characters)            stop_id (first 40 characters)           arrival_time depart_time stop_seq Pickup Dropoff
+======= ======================================== ======================================== =========== =========== ======== ====== =======
+ first 1000
+ last 1000
+Zoom out--old long/lat:      0.000004    -0.000007    -0.000004     0.000007
+Zoomin Pan--New xy:      401      99     533     277     507     250 999999.00
+Zoom Out Pan--New long/lat:   -0.000   0.000   0.000   0.000     0.000003    -0.000007    -0.000005     0.000007
+Zoom Out New scale:    130177.4       355289.1    
+Zoom out--old long/lat:      0.000003    -0.000007    -0.000005     0.000007
+Zoomin Pan--New xy:      506     183     506     183     507     250 999999.00
+Zoom Out Pan--New long/lat:   -0.000   0.000   0.000   0.000     0.000002    -0.000007    -0.000006     0.000007
+Zoom Out New scale:    0.000000       0.000000    
