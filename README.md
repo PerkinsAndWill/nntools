@@ -3,7 +3,7 @@
 ## Purpose
 A place to put commonly used functions for NNers. 
 
-[File an issue](https://github.com/PerkinsAndWill/nntools/issues) or contact Bryan via [Slack](https://nelsonnygaard.slack.com/app_redirect?channel=D1LJ6JERH) or [email](mailto:bblanc@nelsonnygaard.com) if you want Bryan to add functions. 
+[File an issue](https://github.com/PerkinsAndWill/nntools/issues) for future development ideas. 
 
 If you have your own function  you want incorporated, please create a new branch, drop your function into a new script in the `/R` directory, and then file a pull request!
 
