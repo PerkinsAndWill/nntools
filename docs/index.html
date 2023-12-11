@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,25 +33,19 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nntools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/PerkinsAndWill/nntools/">
+  <a href="https://github.com/PerkinsAndWill/nntools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -66,61 +62,73 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="nntools" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#nntools" class="anchor"></a>nntools</h1></div>
-<div id="purpose" class="section level2">
-<h2 class="hasAnchor">
-<a href="#purpose" class="anchor"></a>Purpose</h2>
+<div class="section level1">
+<div class="page-header"><h1 id="nntools">nntools<a class="anchor" aria-label="anchor" href="#nntools"></a>
+</h1></div>
+<div class="section level2">
+<h2 id="purpose">Purpose<a class="anchor" aria-label="anchor" href="#purpose"></a>
+</h2>
 <p>A place to put commonly used functions for NNers.</p>
-<p><a href="https://github.com/PerkinsAndWill/nntools/issues">File an issue</a> or contact Bryan via <a href="https://nelsonnygaard.slack.com/app_redirect?channel=D1LJ6JERH">Slack</a> or <a href="mailto:bblanc@nelsonnygaard.com">email</a> if you want Bryan to add functions.</p>
+<p><a href="https://github.com/PerkinsAndWill/nntools/issues" class="external-link">File an issue</a> for future development ideas.</p>
 <p>If you have your own function you want incorporated, please create a new branch, drop your function into a new script in the <code>/R</code> directory, and then file a pull request!</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install this package using the below code, and filling in the NN access token. The token is in a spreadsheet bookmarked in the private #r-python-core-users Slack channel. Reach out to Bryan Blanc if you have trouble finding the token.</p>
-<p><code><a href="https://devtools.r-lib.org/reference/remote-reexports.html">devtools::install_github("PerkinsAndWill/nntools",                           ref = "master",                           auth_token = "&lt;NN_ACCESS_TOKEN&gt;")</a></code></p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install this package using the below code.</p>
+<p><code>devtools::install_github("PerkinsAndWill/nntools")</code></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/PerkinsAndWill/nntools/">https://​github.com/​PerkinsAndWill/​nntools/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/PerkinsAndWill/nntools/issues">https://​github.com/​PerkinsAndWill/​nntools/​issues</a>
-</li>
+<li><a href="https://github.com/PerkinsAndWill/nntools/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/PerkinsAndWill/nntools/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Bryan Blanc <br><small class="roles"> Maintainer, author </small>  </li>
+<li><a href="authors.html#citation">Citing nntools</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Bryan Blanc <br><small class="roles"> Author </small>  </li>
 <li>Esther Needham <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Bryan Blanc, Esther Needham.</p>
+  <p></p>
+<p>Developed by Bryan Blanc, Esther Needham.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -128,6 +136,8 @@
 
   
 
+
+  
 
   </body>
 </html>
