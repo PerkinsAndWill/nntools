@@ -1,7 +1,7 @@
 ## code to prepare `nn_base_color_palette` dataset goes here
 nn_base_color_palette = tibble::tribble(
   ~color_name, ~hex_code, ~color_category,
-  'NN Blue','#006d9d', 'Primary',
+  'NN Blue','#0092A3', 'Primary',
   'NN Teal',	'#00a4b9',	'Accent',
   'NN Gold',	'#fbab18',	'Accent',
   'NN Red',	'#d63f3e',	'Accent',
@@ -11,7 +11,7 @@ nn_base_color_palette = tibble::tribble(
   'NN Black',	'#000000',	'Background',
   'NN White',	'#FFFFFF',	'Background',
   'NN Sky',	'#33a8df',	'Supplemental',
-  'NN Green',	'#4ea652',	'Supplemental',
+  'NN Green',	'#46954b',	'Supplemental',
   'NN Pear',	'#ccc72c',	'Supplemental',
   'NN Lemon',	'#ffcb05',	'Supplemental',
   'NN Carrot',	'#f47d20',	'Supplemental',
