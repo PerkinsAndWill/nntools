@@ -1,0 +1,3 @@
+#coord_sys_map {
+  height: calc(100vh) !important; /* 100% of window height, can subtract amount of pixels to reduce, like calc(100vh-80px) */
+}
