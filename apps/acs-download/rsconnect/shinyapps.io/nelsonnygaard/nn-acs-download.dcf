@@ -1,0 +1,11 @@
+name: nn-acs-download
+title: nn-acs-download
+username:
+account: nelsonnygaard
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4702891
+bundleId: 11684708
+url: https://nelsonnygaard.shinyapps.io/nn-acs-download/
+asMultiple: FALSE
+asStatic: FALSE
