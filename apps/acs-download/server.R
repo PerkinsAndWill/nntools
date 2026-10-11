@@ -77,6 +77,11 @@ shinyServer(function(input, output, session) {
     
     if(length(user_selection$state_names)>0){
       
+      t_state = tic()
+      message("[timing] ---- state selection: ",
+              paste(user_selection$state_names, collapse = ", "),
+              " | ", sel_parent_geog_type_select())
+      
       sel_state_ids = state_meta %>%
         filter(name %in% user_selection$state_names) %>%
         pull(statefp)
@@ -92,24 +97,30 @@ shinyServer(function(input, output, session) {
                               paste(paste0("'",sel_state_ids,"'"),collapse = ", "),
                               ");")
         
-        county_geoms = st_read(con,query = county_query) %>%
-          st_transform(4326) %>%
-          left_join(state_meta %>%
-                      select(statefp,stusps)) %>%
-          mutate(parent_geog_label = paste0(namelsad,", ",stusps))
+        county_geoms_raw = timed("state > county geom query (st_read)",
+                                 st_read(con,query = county_query, quiet = TRUE))
+        
+        county_geoms = timed("state > county geom transform + join",
+                             county_geoms_raw %>%
+                               st_transform(4326) %>%
+                               left_join(state_meta %>%
+                                           select(statefp,stusps)) %>%
+                               mutate(parent_geog_label = paste0(namelsad,", ",stusps)))
+        log_size(county_geoms, "state > county geoms")
         
         user_selection$state_parent_geog_geoms = county_geoms
         
-        state_county_meta = tbl(con,"county_allyear") %>%
-          # filter(year != case_when(!!sel_ct_year() =="Yes" ~ "CT2022",
-          #                          TRUE ~ "CT2021")) %>%
-          #filter(year %in% years_to_query) %>%
-          filter(statefp %in% sel_state_ids) %>%
-          distinct(countyfp,geoid,namelsad,statefp) %>%
-          collect() %>%
-          left_join(state_meta %>%
-                      select(statefp,stusps)) %>%
-          mutate(parent_geog_label = paste0(namelsad,", ",stusps))
+        state_county_meta = timed("state > county meta query",
+                                  tbl(con,"county_allyear") %>%
+                                    # filter(year != case_when(!!sel_ct_year() =="Yes" ~ "CT2022",
+                                    #                          TRUE ~ "CT2021")) %>%
+                                    #filter(year %in% years_to_query) %>%
+                                    filter(statefp %in% sel_state_ids) %>%
+                                    distinct(countyfp,geoid,namelsad,statefp) %>%
+                                    collect() %>%
+                                    left_join(state_meta %>%
+                                                select(statefp,stusps)) %>%
+                                    mutate(parent_geog_label = paste0(namelsad,", ",stusps)))
         
         user_selection$state_parent_geog_meta = state_county_meta
         
@@ -128,34 +139,37 @@ shinyServer(function(input, output, session) {
                               paste(paste0("'",sel_state_ids,"'"),collapse = ", "),
                               ");")
         
+        county_geoms_raw = timed("state > county geom query (st_read)",
+                                 st_read(con,query = county_query, quiet = TRUE))
         
-        county_geoms = st_read(con,query = county_query) %>%
-          st_transform(4326) %>%
-          left_join(state_meta %>%
-                      select(statefp,stusps)) %>%
-          mutate(parent_geog_label = paste0(namelsad,", ",stusps))
+        county_geoms = timed("state > county geom transform + join",
+                             county_geoms_raw %>%
+                               st_transform(4326) %>%
+                               left_join(state_meta %>%
+                                           select(statefp,stusps)) %>%
+                               mutate(parent_geog_label = paste0(namelsad,", ",stusps)))
+        log_size(county_geoms, "state > county geoms")
         
         user_selection$state_parent_geog_geoms = county_geoms
         
-        state_county_meta = tbl(con,"county_allyear") %>%
-         # filter(year != if (sel_ct_year() == "Yes") "2022" else "2021")%>%
-        # state_county_meta = tbl(con,"counties_2022") %>%
-        #   filter(year != case_when(!!sel_ct_year() =="Yes" ~ "CT2022",
-        #                            TRUE ~ "CT2021")) %>%
-          filter(statefp %in% sel_state_ids) %>%
-          distinct(countyfp,geoid,namelsad,statefp) %>%
-          collect() %>%
-          left_join(state_meta %>%
-                      select(statefp,stusps)) %>%
-          mutate(parent_geog_label = paste0(namelsad,", ",stusps))
+        state_county_meta = timed("state > county meta query",
+                                  tbl(con,"county_allyear") %>%
+                                    # filter(year != if (sel_ct_year() == "Yes") "2022" else "2021")%>%
+                                    # state_county_meta = tbl(con,"counties_2022") %>%
+                                    #   filter(year != case_when(!!sel_ct_year() =="Yes" ~ "CT2022",
+                                    #                            TRUE ~ "CT2021")) %>%
+                                    filter(statefp %in% sel_state_ids) %>%
+                                    distinct(countyfp,geoid,namelsad,statefp) %>%
+                                    collect() %>%
+                                    left_join(state_meta %>%
+                                                select(statefp,stusps)) %>%
+                                    mutate(parent_geog_label = paste0(namelsad,", ",stusps)))
         
         user_selection$state_parent_geog_meta = state_county_meta
         
         updatePickerInput(session,
                           "parent_geog_select",
                           choices = sort(state_county_meta$parent_geog_label))
-        
-        
         
       }
       
@@ -164,21 +178,27 @@ shinyServer(function(input, output, session) {
                            paste(paste0("'",sel_state_ids,"'"),collapse = ", "),
                            ");")
         
-        cdp_geoms = st_read(con,query = cdp_query) %>%
-          st_transform(4326) %>%
-          left_join(state_meta %>%
-                      select(statefp,stusps)) %>%
-          st_as_sf() %>%
-          mutate(parent_geog_label = paste0(namelsad,", ",stusps))
+        cdp_geoms_raw = timed("state > CDP geom query (st_read)",
+                              st_read(con,query = cdp_query, quiet = TRUE))
+        
+        cdp_geoms = timed("state > CDP geom transform + join",
+                          cdp_geoms_raw %>%
+                            st_transform(4326) %>%
+                            left_join(state_meta %>%
+                                        select(statefp,stusps)) %>%
+                            st_as_sf() %>%
+                            mutate(parent_geog_label = paste0(namelsad,", ",stusps)))
+        log_size(cdp_geoms, "state > CDP geoms")
         
         user_selection$state_parent_geog_geoms = cdp_geoms
         
-        state_cdp_meta = cdp_geoms %>%
-          st_drop_geometry() %>%
-          distinct(geoid,name,namelsad,statefp) %>%
-          left_join(state_meta %>%
-                      select(statefp,stusps)) %>%
-          mutate(parent_geog_label = paste0(namelsad,", ",stusps))
+        state_cdp_meta = timed("state > CDP meta (from geoms)",
+                               cdp_geoms %>%
+                                 st_drop_geometry() %>%
+                                 distinct(geoid,name,namelsad,statefp) %>%
+                                 left_join(state_meta %>%
+                                             select(statefp,stusps)) %>%
+                                 mutate(parent_geog_label = paste0(namelsad,", ",stusps)))
         
         user_selection$state_parent_geog_meta = state_cdp_meta
         
@@ -190,13 +210,18 @@ shinyServer(function(input, output, session) {
                             paste(paste0("'",sel_state_ids,"'"),collapse = ", "),
                             ");")
         
-        cbsa_geoms = st_read(con,query = cbsa_query) %>%
-          st_transform(4326) %>%
-          arrange(geoid) %>%
-          group_by(geoid) %>%
-          do(head(., n=1)) %>%
-          st_as_sf()  %>%
-          mutate(parent_geog_label = namelsad)
+        cbsa_geoms_raw = timed("state > CBSA geom query (st_read)",
+                               st_read(con,query = cbsa_query, quiet = TRUE))
+        
+        cbsa_geoms = timed("state > CBSA geom transform + dedupe",
+                           cbsa_geoms_raw %>%
+                             st_transform(4326) %>%
+                             arrange(geoid) %>%
+                             group_by(geoid) %>%
+                             do(head(., n=1)) %>%
+                             st_as_sf()  %>%
+                             mutate(parent_geog_label = namelsad))
+        log_size(cbsa_geoms, "state > CBSA geoms")
         
         user_selection$state_parent_geog_geoms = cbsa_geoms
         
@@ -210,55 +235,82 @@ shinyServer(function(input, output, session) {
                           "parent_geog_select",
                           choices = sort(user_selection$state_parent_geog_meta$parent_geog_label))
       }
+      
+      toc(t_state, "state > TOTAL server-side")
+      
+    }else{
+      # No states selected: clear geoms so the map observer resets the view
+      user_selection$state_parent_geog_geoms = NULL
+      user_selection$state_parent_geog_meta = NULL
     }
   })
   
-  #Initial Plotting of parent geog map upon state selection -------
+  # Parent geog map -------
+  ## Render the base map ONCE. All later changes go through mapboxgl_proxy so the
+  ## map isn't torn down and rebuilt on every state change (enables fly-to).
   output$acs_download_map = renderMapboxgl({
-    
-    sel_state_names = user_selection$state_names
-    sel_parent_geog_type_select()
-    
-    geom <- user_selection$state_parent_geog_geoms
-    
-    if(length(sel_state_names)>0){
-      
-      mapboxgl(
-        style = mapbox_style("light"),
-        bounds = geom
-      ) %>% 
-        add_fill_layer(
-          id = "geom_fill",
-          source = geom,
-          # fill_color = "grey",
-          fill_color = selection_fill_color(isolate(user_selection$parent_geog_geoids)),
-          fill_opacity = 0.7,
-          tooltip = "parent_geog_label",
-          hover_options = list(fill_opacity = 0.9)
-        ) %>% 
-        add_line_layer(
-          id = "geom_line",
-          source = geom,
-          line_color = "white",
-          line_width = 3,
-          hover_options = list(line_width = 5)
-        )
-      
-    }else{
-      mapboxgl(
-        style = mapbox_style("light"),
-        center = c(-92.6983399, 50.3495809),
-        zoom = 3
-      )
-      
-    }
+    mapboxgl(
+      style = mapbox_style("light"),
+      center = default_map_center,
+      zoom = default_map_zoom
+    )
   })
+  
+  ## Swap layers + fly to new bounds whenever the state geometries change --------
+  observeEvent(user_selection$state_parent_geog_geoms, {
+    
+    t_map = tic()
+    geom = user_selection$state_parent_geog_geoms
+    proxy = mapboxgl_proxy("acs_download_map")
+    
+    # Remove the previous state's layers (and their sources)
+    proxy %>%
+      clear_layer("geom_line") %>%
+      clear_layer("geom_fill")
+    
+    if(is.null(geom) || nrow(geom) == 0){
+      # All states cleared: fly back to the default overview
+      proxy %>%
+        fly_to(center = default_map_center,
+               zoom = default_map_zoom,
+               duration = map_fly_duration_ms)
+      return()
+    }
+    
+    # Start the camera animation first so it isn't held up by the layer upload
+    proxy %>%
+      fit_bounds(geom,
+                 animate = TRUE,
+                 duration = map_fly_duration_ms,
+                 padding = map_fit_padding) %>%
+      add_fill_layer(
+        id = "geom_fill",
+        source = geom,
+        fill_color = selection_fill_color(isolate(user_selection$parent_geog_geoids)),
+        fill_opacity = 0.7,
+        tooltip = "parent_geog_label",
+        hover_options = list(fill_opacity = 0.9)
+      ) %>% 
+      add_line_layer(
+        id = "geom_line",
+        source = geom,
+        line_color = "white",
+        line_width = 3,
+        hover_options = list(line_width = 5)
+      )
+    
+    # NOTE: this only measures R-side serialization + send. Browser-side GeoJSON
+    # parse/render time shows up in the browser DevTools Performance tab.
+    toc(t_map, "map > proxy update serialized + sent")
+    
+  }, ignoreNULL = FALSE, ignoreInit = TRUE)
   
   # Parent Geography Selection Reactivity ----------------------------
   
   ## Update county selection in picker based on map ------------------
   observeEvent(input$acs_download_map_feature_click, {
     
+    t_click = tic()
     click <- input$acs_download_map_feature_click
     clicked_geoid <- click$properties$geoid
     req(clicked_geoid)
@@ -283,11 +335,13 @@ shinyServer(function(input, output, session) {
     
     updatePickerInput(session, "parent_geog_select", selected = new_selected_parent_geog_names)
     
+    toc(t_click, "map click > select/deselect")
   })
   
   ## Update parent geog selection in map based on picker --------------------
   observeEvent(input$parent_geog_select, {
     
+    t_pick = tic()
     picker_labels = input$parent_geog_select
     
     if(length(picker_labels) > 0){
@@ -304,21 +358,23 @@ shinyServer(function(input, output, session) {
       set_paint_property("geom_fill", "fill-color",
                          selection_fill_color(picker_geoids))
     
+    toc(t_pick, "picker > repaint selection")
+    
   }, ignoreNULL = FALSE)
-
+  
   # Year Selection Reactivity -------------
   observeEvent(input$geog_level, {
     
     prev_year_select = input$year_select
     
     if(input$geog_level =="Block Groups"){
-
+      
       if(length(prev_year_select)>0){
         clean_year_select = prev_year_select[as.numeric(prev_year_select)>=2013]
       }else{
         clean_year_select = character(0)
       }
-
+      
       updatePickerInput(session,
                         "year_select",
                         choices = rev(years_available),
@@ -350,39 +406,43 @@ shinyServer(function(input, output, session) {
   # Variable of Interest Table ----------------
   output$voi_desc = renderDT({
     
-    voi_ref %>%
-      mutate(table_name = str_replace(table_name,"...... - ","")) %>%
-      select(voi_id:universe,table_number,table_name,tracts_bool:years_available) %>%
-      rename(`#` = `voi_id`,
-             `Variable of Interest` = `variable_of_interest`,
-             `VOI Type` = `voi_type`,
-             `Units` = `units`, 
-             `Universe` = `universe`,
-             `Table Number` = `table_number`, 
-             `Table Name` = `table_name`,
-             `Available at Tract Level?`=`tracts_bool`,
-             `Available at Block Group Level?`=`block_groups_bool`,
-             `Notes`=`notes`,
-             `Years Available` = `years_available`) %>%
-      datatable(options = list(paging=FALSE, scrollY='500px'),
-                rownames = FALSE, filter = 'top')
+    timed("render > VOI table", {
+      voi_ref %>%
+        mutate(table_name = str_replace(table_name,"...... - ","")) %>%
+        select(voi_id:universe,table_number,table_name,tracts_bool:years_available) %>%
+        rename(`#` = `voi_id`,
+               `Variable of Interest` = `variable_of_interest`,
+               `VOI Type` = `voi_type`,
+               `Units` = `units`, 
+               `Universe` = `universe`,
+               `Table Number` = `table_number`, 
+               `Table Name` = `table_name`,
+               `Available at Tract Level?`=`tracts_bool`,
+               `Available at Block Group Level?`=`block_groups_bool`,
+               `Notes`=`notes`,
+               `Years Available` = `years_available`) %>%
+        datatable(options = list(paging=FALSE, scrollY='500px'),
+                  rownames = FALSE, filter = 'top')
+    })
   })
   
   output$census_voi_desc = renderDT({
     
-    census_voi_ref %>%
-      mutate(table_name = str_replace(table_name,"...... - ","")) %>%
-      select(voi_id:universe,table_number,table_name,notes) %>%
-      rename(`#` = `voi_id`,
-             `Variable of Interest` = `variable_of_interest`,
-             `VOI Type` = `voi_type`,
-             `Units` = `units`, 
-             `Universe` = `universe`,
-             `Table Number` = `table_number`, 
-             `Table Name` = `table_name`,
-             `Notes`=`notes`) %>%
-      datatable(options = list(paging=FALSE),
-                rownames = FALSE, filter = 'top')
+    timed("render > Census VOI table", {
+      census_voi_ref %>%
+        mutate(table_name = str_replace(table_name,"...... - ","")) %>%
+        select(voi_id:universe,table_number,table_name,notes) %>%
+        rename(`#` = `voi_id`,
+               `Variable of Interest` = `variable_of_interest`,
+               `VOI Type` = `voi_type`,
+               `Units` = `units`, 
+               `Universe` = `universe`,
+               `Table Number` = `table_number`, 
+               `Table Name` = `table_name`,
+               `Notes`=`notes`) %>%
+        datatable(options = list(paging=FALSE),
+                  rownames = FALSE, filter = 'top')
+    })
   })
   
   ## Update VOI availability based on geography level selected -------
@@ -506,6 +566,14 @@ shinyServer(function(input, output, session) {
   # Prepare Download button (triggers query and packaging of download) --------------
   observeEvent(input$prepare_download,{
     
+    t_dl = tic()
+    message("[timing] ---- compile dataset: ",
+            user_selection$geog_level, " | ",
+            length(user_selection$parent_geog_geoids), " parent geogs | ",
+            length(user_selection$voi_selection), " VOIs | ",
+            length(user_selection$years_selected), " years | geom = ",
+            user_selection$geom_include)
+    
     #Initialize waiter spinner
     waiter <- waiter::Waiter$new()
     waiter$show()
@@ -515,23 +583,26 @@ shinyServer(function(input, output, session) {
     
     pre_entry = generate_query_record_entry(user_selection) 
     
-    predicted_completion_seconds = pre_entry %>%
-      mutate(geog_level = factor(geog_level)) %>%
-      predict(trained_rf_model,.) %>%
-      pull(.pred)
-
+    predicted_completion_seconds = timed("download > RF time prediction",
+                                         pre_entry %>%
+                                           mutate(geog_level = factor(geog_level)) %>%
+                                           predict(trained_rf_model,.) %>%
+                                           pull(.pred))
+    message(sprintf("[timing] %-50s %8.3f s", "download > (model PREDICTED total)", predicted_completion_seconds))
+    
     note_seconds = case_when(
       predicted_completion_seconds < 5 ~ predicted_completion_seconds,
       TRUE ~ 5
     )
-
+    
     showNotification(paste0("Query estimated to take ",
                             round(predicted_completion_seconds),
                             " seconds to complete."),
                      duration = note_seconds)
     
     #Fetch data based on user selections
-    query_result = fetch_query(user_selection)
+    query_result = timed("download > fetch_query()", fetch_query(user_selection))
+    log_size(query_result, "download > query_result")
     
     #Remove duplicates when downloading 2023 (fixed )
     
@@ -545,23 +616,26 @@ shinyServer(function(input, output, session) {
     }
     
     tmp_meta_lines = tempfile(pattern = "uscb-export-metadata-",fileext = ".txt")
-    generate_query_meta_file(user_selection,tmp_meta_lines)
+    timed("download > write metadata txt",
+          generate_query_meta_file(user_selection,tmp_meta_lines))
     
     #csv version of tabular data
     tmp_flat = tempfile(pattern = "uscb-export-",fileext = '.csv')
-    write_csv(query_result,tmp_flat,na="")
+    timed("download > write CSV", write_csv(query_result,tmp_flat,na=""))
     
     #Excel version of tabular data
     tmp_excel = tempfile(pattern = "uscb-export-excel-",fileext = '.xlsx')
-    wb = createWorkbook()
-    addWorksheet(wb,"data")
-    textStyle = createStyle(numFmt = "TEXT")
-    col_nums_for_style = which(colnames(query_result) %in% 
-                                 c('parent_geog_geoid', 'statefp', 'countyfp', 'query_geog_geoid'))
-    writeData(wb,sheet='data',x=query_result)
-    addStyle(wb,sheet="data",style = textStyle, cols = col_nums_for_style, rows = 1:nrow(query_result),
-             gridExpand = TRUE)
-    saveWorkbook(wb,tmp_excel,overwrite = TRUE)
+    timed("download > build + write Excel", {
+      wb = createWorkbook()
+      addWorksheet(wb,"data")
+      textStyle = createStyle(numFmt = "TEXT")
+      col_nums_for_style = which(colnames(query_result) %in% 
+                                   c('parent_geog_geoid', 'statefp', 'countyfp', 'query_geog_geoid'))
+      writeData(wb,sheet='data',x=query_result)
+      addStyle(wb,sheet="data",style = textStyle, cols = col_nums_for_style, rows = 1:nrow(query_result),
+               gridExpand = TRUE)
+      saveWorkbook(wb,tmp_excel,overwrite = TRUE)
+    })
     
     #Package geometry for download (if necessary)
     if(user_selection$geom_include == TRUE){
@@ -577,11 +651,11 @@ shinyServer(function(input, output, session) {
       
       years_to_query = case_when(
         user_selection$geog_level == "Blocks" ~ 2020,
-
+        
         user_selection$geog_level == "Block Groups" ~   as.numeric(user_selection$years_selected), 
-
+        
         user_selection$geog_level == "Tracts" ~   as.numeric(user_selection$years_selected), 
-
+        
         user_selection$geog_level == "Counties" ~ as.numeric(user_selection$years_selected), 
         user_selection$geog_level == "Census Designated Places" ~  as.numeric(user_selection$years_selected),  #changed from 2022 to 2021 due to error
         user_selection$geog_level ==  "Core Based Statistical Areas" ~  as.numeric(user_selection$years_selected)  #changed from 2022 to 2021 due to error
@@ -603,24 +677,30 @@ shinyServer(function(input, output, session) {
                             ");")
       }
       
-      reconnect_db()
-      sel_geom = st_read(con,query = geog_query) %>%
-        st_transform(4326) %>%
-        mutate(aland_sqmi = aland * 0.00000038610,
-               aland_acre = aland * 0.000247105 ,
-               #geoid_numeric = as.numeric(geoid)
-             
-                 
-        ) %>%
-        select(-aland,-awater)
+      timed("download > reconnect db (geom)", reconnect_db())
+      
+      sel_geom_raw = timed("download > geom query (st_read)",
+                           st_read(con,query = geog_query, quiet = TRUE))
+      
+      sel_geom = timed("download > geom transform + area calcs",
+                       sel_geom_raw %>%
+                         st_transform(4326) %>%
+                         mutate(aland_sqmi = aland * 0.00000038610,
+                                aland_acre = aland * 0.000247105 ,
+                                #geoid_numeric = as.numeric(geoid)
+                         ) %>%
+                         select(-aland,-awater))
+      log_size(sel_geom, "download > sel_geom")
       
       temp_shp_dir = tempdir(check=TRUE)
-      st_write(obj = sel_geom %>% st_as_sf() ,
-               dsn = paste0(temp_shp_dir,"/uscb-export-geom.shp"),
-               layer = "uscb-export-geom",
-               #overwrite_layer = TRUE, 
-               append = FALSE,
-               driver = "ESRI Shapefile")
+      timed("download > write shapefile",
+            st_write(obj = sel_geom %>% st_as_sf() ,
+                     dsn = paste0(temp_shp_dir,"/uscb-export-geom.shp"),
+                     layer = "uscb-export-geom",
+                     #overwrite_layer = TRUE, 
+                     append = FALSE,
+                     driver = "ESRI Shapefile",
+                     quiet = TRUE))
       shp_files = list.files(temp_shp_dir,pattern = "uscb-export-geom",
                              full.names = TRUE)
       
@@ -635,10 +715,14 @@ shinyServer(function(input, output, session) {
     
     query_entry = generate_query_record_entry(user_selection)
     
-    reconnect_db()
-    dbWriteTable(con,"acs_query_records",query_entry,row.names=FALSE,append=TRUE)
+    timed("download > reconnect db + write query record", {
+      reconnect_db()
+      dbWriteTable(con,"acs_query_records",query_entry,row.names=FALSE,append=TRUE)
+    })
     
     compiled_download_vector(file_vec)
+    
+    toc(t_dl, "download > TOTAL compile")
   })
   
   output$download_uscb = downloadHandler(
@@ -658,7 +742,7 @@ shinyServer(function(input, output, session) {
       waiter$show()
       on.exit(waiter$hide())
       
-      zip::zipr(file, files = compiled_download_vector())
+      timed("download > zip files", zip::zipr(file, files = compiled_download_vector()))
       
     },
     contentType = "application/zip"
