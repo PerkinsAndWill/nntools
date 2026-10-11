@@ -33,7 +33,8 @@ fluidPage(
                 width="15%", style = "z-index:5000; min-width: 300px;",
                 
                 wellPanel(
-                  pickerInput("state_select","3) Select State(s)",
+                  pickerInput("state_select",
+                              "3) Select State(s)",
                               choices = state_meta$name,
                               multiple = TRUE,
                               width = "100%")
