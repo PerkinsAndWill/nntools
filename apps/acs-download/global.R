@@ -147,7 +147,7 @@ years_available = table_year_ref %>%
   as.character()
 
 # Write out Census variable definitions to RDS file for help parsing variable names
-census_vars = timed("startup > read 2020 census vars RDS",
+acs_vars = timed("startup > read 2020 census vars RDS",
                     read_rds("data/1_original/2020_census_vars.rds"))
 
 # Standard colors
