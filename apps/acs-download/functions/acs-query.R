@@ -120,7 +120,7 @@ fetch_acs_voi = function(sel_voi_id,
       filter(available) %>%
       select(-available) %>%
       mutate(acs_result = pmap(.l = list(statefp,countyfp,year,table_number),
-                               ~safe_get_acs(geography = formatted_geog_level,
+                               ~get_acs(geography = formatted_geog_level,
                                         table = ..4,
                                         year = ..3, 
                                         survey = sel_survey,
@@ -135,7 +135,7 @@ fetch_acs_voi = function(sel_voi_id,
       filter(available) %>%
       select(-available) %>%
       mutate(acs_result = pmap(.l = list(year,table_number),
-                               ~safe_get_acs(geography = formatted_geog_level,
+                               ~get_acs(geography = formatted_geog_level,
                                         table = ..2,
                                         year = ..1, 
                                         survey = sel_survey))) %>%
@@ -150,7 +150,7 @@ fetch_acs_voi = function(sel_voi_id,
       filter(available) %>%
       select(-available) %>%
       mutate(acs_result = pmap(.l = list(statefp,year,table_number),
-                               ~safe_get_acs(geography = formatted_geog_level,
+                               ~get_acs(geography = formatted_geog_level,
                                         table = ..3,
                                         year = ..2, 
                                         survey = sel_survey,
